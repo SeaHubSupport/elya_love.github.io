@@ -205,26 +205,62 @@ document.addEventListener('DOMContentLoaded', () => {
     // Обработчик кнопки "Нажми" в секции "Люблю тебя"
     document.getElementById('show-text-btn').addEventListener('click', () => {
         const loveTextContainer = document.getElementById('love-text');
+        const uploadLabel = document.getElementById('upload-label');
+        const fileInput = document.getElementById('text-file-input');
 
-        // Загружаем текст из text.txt с помощью Fetch API
-        fetch('text.txt')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Ошибка при загрузке файла');
-                }
-                return response.text();
-            })
-            .then(data => {
-                // Отображаем загруженный текст
-                loveTextContainer.textContent = data; // Используем textContent для сохранения форматирования
+        // Показать кнопку загрузки файла
+        uploadLabel.classList.remove('hidden');
+
+        // Если уже загружен текст из файла, не загружать text.txt
+        if (loveTextContainer.dataset.loaded !== 'file') {
+            // Загружаем текст из text.txt с помощью Fetch API
+            fetch('text.txt')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Ошибка при загрузке файла');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    // Отображаем загруженный текст
+                    loveTextContainer.textContent = data; // Используем textContent для сохранения форматирования
+                    loveTextContainer.classList.remove('hidden');
+                    loveTextContainer.classList.add('love-text');
+                })
+                .catch(error => {
+                    console.error('Ошибка:', error);
+                    loveTextContainer.textContent = 'Не удалось загрузить текст.';
+                    loveTextContainer.classList.remove('hidden');
+                    loveTextContainer.classList.add('love-text');
+                });
+        }
+    });
+
+    // Обработчик загрузки файла
+    document.getElementById('text-file-input').addEventListener('change', (event) => {
+        const file = event.target.files[0];
+        const loveTextContainer = document.getElementById('love-text');
+
+        if (file && file.type === 'text/plain') {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const content = e.target.result;
+                loveTextContainer.textContent = content;
                 loveTextContainer.classList.remove('hidden');
                 loveTextContainer.classList.add('love-text');
-            })
-            .catch(error => {
-                console.error('Ошибка:', error);
-                loveTextContainer.textContent = 'Не удалось загрузить текст.';
+                loveTextContainer.dataset.loaded = 'file'; // Помечаем, что текст загружен из файла
+            };
+            reader.onerror = function() {
+                console.error('Ошибка при чтении файла');
+                loveTextContainer.textContent = 'Не удалось загрузить текст из файла.';
                 loveTextContainer.classList.remove('hidden');
                 loveTextContainer.classList.add('love-text');
-            });
+            };
+            reader.readAsText(file);
+        } else {
+            loveTextContainer.textContent = 'Пожалуйста, выберите текстовый файл (.txt).';
+            loveTextContainer.classList.remove('hidden');
+            loveTextContainer.classList.add('love-text');
+        }
     });
 });

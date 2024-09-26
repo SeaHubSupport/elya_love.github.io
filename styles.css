@@ -183,6 +183,35 @@ button:hover {
     }
 }
 
+/* Стили для элемента загрузки файла */
+.file-input {
+    display: none; /* Скрываем стандартный input */
+}
+
+.upload-label {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #ff69b4, #ff1493);
+    border: 2px solid white;
+    border-radius: 30px;
+    color: #fff;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.upload-label:hover {
+    background: linear-gradient(45deg, #ff1493, #ff69b4);
+    transform: scale(1.05);
+    border-color: #fff;
+    box-shadow: 
+        0 6px 20px rgba(0, 0, 0, 0.3),
+        0 0 10px rgba(255, 255, 255, 0.7),
+        0 0 20px rgba(255, 105, 180, 0.5);
+}
+
 /* Декоративные элементы */
 .decorative-elements {
     position: absolute;
@@ -232,5 +261,10 @@ button:hover {
 
     .love-text {
         font-size: 1.5em;
+    }
+
+    .upload-label {
+        font-size: 0.9em;
+        padding: 8px 16px;
     }
 }

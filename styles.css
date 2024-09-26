@@ -1,0 +1,236 @@
+/* Общие стили */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    scroll-behavior: smooth; /* Плавная прокрутка */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4, #ffdde1);
+    position: relative; /* Для корректного позиционирования канваса */
+}
+
+/* Фоновая анимация */
+.background-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 234, 238, 0.8), transparent);
+    animation: gradientMove 8s infinite alternate;
+    z-index: -1;
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+/* Стили секций */
+.section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative; /* Для корректного позиционирования содержимого */
+    transition: transform 0.5s ease, opacity 0.5s ease; /* Плавные переходы при появлении */
+}
+
+/* Карточка с содержимым */
+.content-card {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow:
+        0 4px 8px rgba(0, 0, 0, 0.2),
+        0 6px 20px rgba(0, 0, 0, 0.19),
+        0 0 20px rgba(255, 255, 255, 0.5), /* Внешнее свечение */
+        0 0 30px rgba(255, 105, 180, 0.3), /* Цветовое свечение */
+        0 0 40px rgba(255, 105, 180, 0.2); /* Дополнительное свечение */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    transition: box-shadow 0.3s ease; /* Переход для теней */
+}
+
+/* Подсветка .content-card при наведении */
+.content-card:hover {
+    box-shadow:
+        0 8px 16px rgba(0, 0, 0, 0.3),
+        0 12px 30px rgba(0, 0, 0, 0.25),
+        0 0 30px rgba(255, 255, 255, 0.7),
+        0 0 40px rgba(255, 105, 180, 0.4),
+        0 0 50px rgba(255, 105, 180, 0.3);
+}
+
+/* Заголовки и текст */
+h1, h2 {
+    font-size: 2.5em;
+    color: #ff69b4;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+p {
+    font-size: 1.5em;
+    color: #4A154B;
+}
+
+/* Кнопки */
+button {
+    padding: 15px 30px;
+    background: linear-gradient(45deg, #ff69b4, #ff1493);
+    border: 2px solid white; /* Белая рамка */
+    border-radius: 30px;
+    color: #fff;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: relative; /* Для псевдоэлементов при необходимости */
+}
+
+button:hover {
+    background: linear-gradient(45deg, #ff1493, #ff69b4);
+    transform: scale(1.1);
+    border-color: #fff; /* Подсветка белой рамкой */
+    /* Дополнительное свечение рамки */
+    box-shadow: 
+        0 6px 20px rgba(0, 0, 0, 0.3),
+        0 0 10px rgba(255, 255, 255, 0.7),
+        0 0 20px rgba(255, 105, 180, 0.5);
+}
+
+/* Фейерверк canvas */
+#fireworksCanvas {
+    position: fixed; /* Покрывает всю страницу */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Скрытие и плавное появление секций */
+.hidden {
+    opacity: 0;
+    transform: translateY(100px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Стили для новой секции с фотографией */
+.photo-container {
+    position: relative;
+    margin-top: 20px;
+    width: 300px;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.photo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transform: scale(1.2);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.photo-container.show {
+    opacity: 1;
+}
+
+.photo-container.show img {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Стили для новой секции "Люблю тебя" */
+.love-text {
+    margin-top: 20px;
+    font-size: 2em; /* Большой размер текста */
+    color: #ff69b4;
+    font-weight: bold;
+    animation: fadeIn 2s ease-in-out;
+    white-space: pre-wrap; /* Сохранение переносов строк и пробелов */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Декоративные элементы */
+.decorative-elements {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 100px;
+    height: 100px;
+    /* Добавьте здесь стили для декоративных элементов, например, анимацию, SVG иконки и т.д. */
+}
+
+.decorative-elements svg {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 768px) {
+    .content-card {
+        padding: 20px;
+    }
+
+    h1, h2 {
+        font-size: 2em;
+    }
+
+    p {
+        font-size: 1.2em;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+
+    .photo-container {
+        width: 200px;
+        height: 300px;
+    }
+
+    .love-text {
+        font-size: 1.5em;
+    }
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поздравление с Днем Рождения</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Фейерверк canvas -->
+    <canvas id="fireworksCanvas"></canvas>
+
+    <!-- Секция 1: Приветствие -->
+    <section class="section visible" id="section1">
+        <div class="content-card">
+            <h1>С Днем Рождения, <span id="name">принцесса</span>!</h1>
+            <p>Желаю волшебного дня, наполненного радостью и сюрпризами!</p>
+        </div>
+    </section>
+
+    <!-- Секция 2: Фейерверк -->
+    <section class="section hidden" id="section2">
+        <div class="content-card">
+            <button id="fireworks-btn">Фейерверк для тебя 🎆</button>
+        </div>
+    </section>
+
+    <!-- Секция 3: Пожелания -->
+    <section class="section hidden" id="section3">
+        <div class="content-card">
+            <h2>Пожелания</h2>
+            <button id="reveal-wish">Получить пожелание</button>
+            <p id="wish-message"></p>
+        </div>
+    </section>
+
+    <!-- Секция 4: Самая красивая девочка в мире -->
+    <section class="section hidden" id="section4">
+        <div class="content-card">
+            <h2>Самая красивая девочка в мире</h2>
+            <button id="show-photo-btn">Показать фотографию 🌸</button>
+            <div id="photo-container" class="photo-container hidden">
+                <img src="" alt="Самая красивая девочка в мире" id="beautiful-girl-photo">
+            </div>
+        </div>
+    </section>
+
+    <!-- Новая Секция 5: Люблю тебя -->
+    <section class="section hidden" id="section5">
+        <div class="content-card">
+            <h2>Люблю тебя</h2>
+            <button id="show-text-btn">Нажми</button>
+            <div id="love-text" class="love-text hidden"></div>
+        </div>
+    </section>
+
+    <!-- Декоративные элементы -->
+    <div class="decorative-elements">
+        <!-- Пример SVG иконки -->
+        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="10" stroke="#ff69b4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M12 6V12L16 14" stroke="#ff69b4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        <!-- Добавьте больше SVG или других элементов по вашему выбору -->
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

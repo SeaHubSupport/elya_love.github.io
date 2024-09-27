@@ -38,31 +38,27 @@
     <section class="section hidden" id="section4">
         <div class="content-card">
             <h2>Самая красивая девочка в мире</h2>
-            <button id="show-photo-btn">Показать фотографию 🌸</button>
+            <button id="show-photo-btn">Показать фотографии 🌸</button>
             <div id="photo-container" class="photo-container hidden">
-                <img src="" alt="Самая красивая девочка в мире" id="beautiful-girl-photo">
+                <!-- Фотографии будут добавляться сюда -->
             </div>
         </div>
     </section>
 
-    <!-- Новая Секция 5: Люблю тебя -->
+    <!-- Секция 5: Отправка пожелания в Telegram -->
     <section class="section hidden" id="section5">
         <div class="content-card">
-            <h2>Люблю тебя</h2>
-            <button id="show-text-btn">Нажми</button>
-            <div id="love-text" class="love-text hidden"></div>
+            <h2>Оставить пожелание</h2>
+            <form id="telegram-form">
+                <textarea id="telegram-message" placeholder="Введите ваше пожелание..." required></textarea>
+                <button type="submit">Отправить в Telegram 💌</button>
+            </form>
+            <p id="telegram-response"></p>
         </div>
     </section>
 
-    <!-- Декоративные элементы -->
-    <div class="decorative-elements">
-        <!-- Пример SVG иконки -->
-        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="12" cy="12" r="10" stroke="#ff69b4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M12 6V12L16 14" stroke="#ff69b4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
-        <!-- Добавьте больше SVG или других элементов по вашему выбору -->
-    </div>
+    <!-- Подключение библиотеки canvas-confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 
     <script src="script.js"></script>
 </body>
